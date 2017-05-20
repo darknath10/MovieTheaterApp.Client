@@ -1,0 +1,7 @@
+img {
+  max-height: 278px;
+}
+
+.movie-card-body {
+  flex-grow: 1;
+}
