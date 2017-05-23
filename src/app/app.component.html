@@ -1,4 +1,4 @@
 <nav-bar></nav-bar>
-<div class="container-fluid">
+<div [ngClass]="{'container': screen.isLarge(), 'container-fluid': !screen.isLarge()}">
   <router-outlet></router-outlet>
 </div>
