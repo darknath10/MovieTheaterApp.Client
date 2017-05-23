@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { ScreenService } from '../../services/screen.service';
+
 import { IMovie } from '../movie.model';
 
 @Component({
@@ -10,7 +12,7 @@ import { IMovie } from '../movie.model';
 export class MovieCardComponent implements OnInit {
   @Input() movie: IMovie;
 
-  constructor() { }
+  constructor(private screen: ScreenService) { }
 
   ngOnInit() {
   }
