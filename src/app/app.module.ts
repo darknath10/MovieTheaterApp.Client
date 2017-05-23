@@ -8,6 +8,8 @@ import { MovieModule } from './movies/movie.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
+import { ScreenService } from './services/screen.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AppRoutingModule,
     MovieModule
   ],
-  providers: [],
+  providers: [ScreenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
