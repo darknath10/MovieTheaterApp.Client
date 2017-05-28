@@ -28,7 +28,6 @@ export class ScreenService {
   }
 
   isLarge(): boolean {
-    console.log(this.screenWidth >= this.mediumBreakpoint);
     return this.screenWidth >= this.mediumBreakpoint;
   }
 }
