@@ -19,8 +19,8 @@ import { ScreenService } from './services/screen.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule,
-    MovieModule
+    MovieModule,
+    AppRoutingModule
   ],
   providers: [ScreenService],
   bootstrap: [AppComponent]
