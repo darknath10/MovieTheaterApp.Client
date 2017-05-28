@@ -10,7 +10,7 @@ import { IMovie } from '../movie.model';
 @Injectable()
 export class MovieService {
 
-  private _movieTheaterUrl = "http://localhost:55000/api/movies";
+  private _movieTheaterUrl = "http://localhost:5000/api/movies";
 
   constructor(private http: Http) {}
 
