@@ -1,40 +1,34 @@
 .movie-card {
-  display: flex;
   max-height: 278px;
-  background-color: red;
+  background-color: #ddd;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.movie-card-poster {
-  display: flex;
-  flex-grow: 0;
-}
-
-.movie-card-poster img {
-  max-height: 278px;
+.movie-card > img {
+  max-height: inherit;
   width: auto;
 }
 
-.movie-card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-
 .movie-card-body-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  max-width: 338.67px;
 }
 
-.movie-card-body-header a, a:hover, a:focus {
+.movie-card-body-header a {
   text-decoration: none;
   color: inherit;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
-  padding-right: 20px;
+}
+
+.movie-card-body-meta em {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-card-body p {
+  max-height: 37%;
+  overflow: hidden;
 }

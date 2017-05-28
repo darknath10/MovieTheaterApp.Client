@@ -1,15 +1,16 @@
-<div *ngIf="screen.isLarge(); else elseBlock" class="movie-card">
-  <div class="movie-card-poster">
-    <img [src]="movie.poster_path" [alt]="movie.title" />
-  </div>
-  <div class="movie-card-body">
-    <div class="movie-card-body-header">
-      <a href="#" [title]="movie.title">{{movie.title | uppercase}}</a>
+<div *ngIf="screen.isLarge(); else elseBlock" class="d-flex movie-card">
+  <img [src]="movie.poster_path" [alt]="movie.title" />
+  <div class="movie-card-body d-flex flex-column justify-content-start w-100 m-2">
+    <div class="movie-card-body-header d-flex justify-content-between">
+      <a href="#" class="w-75" [title]="movie.title">{{movie.title}}</a>
       <span>{{movie.vote_average}} <i class="fa fa-star"></i></span>
     </div>
-    <div class="movie-card-body-footer">
-      <button type="button" class="btn btn-info btn-block">Details</button>
+    <div class="movie-card-body-meta d-flex justify-content-between mb-auto">
+      <span class="w-50"><i class="fa fa-calendar"></i> {{movie.release_date}}</span>
+      <em class="ml-auto" [title]="movie.genres">{{movie.genres}}</em>
     </div>
+    <p class="mb-auto">{{movie.overview}}</p>
+    <button type="button" class="btn btn-info btn-block">Details</button>
   </div>
 </div>
 
