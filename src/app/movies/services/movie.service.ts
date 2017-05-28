@@ -16,7 +16,11 @@ export class MovieService {
 
   getMovies(): Observable<IMovie[]> {
     return this.http.get(this._movieTheaterUrl)
-      .map((response: Response) => <IMovie[]>response.json())
+      .map((response: Response) => <IMovie[]>response.json().map((movie: IMovie) => {
+        movie.poster_path = `http://image.tmdb.org/t/p/original/${movie.poster_path}`;
+        movie.backdrop_path = `http://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+        return movie;
+      }))
       .catch(this.handleError);
   }
 
