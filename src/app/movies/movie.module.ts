@@ -8,6 +8,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 
 import { MovieService } from './services/movie.service';
 import { MovieListResolver } from './services/movie-list-resolver.service';
+import { MovieDetailResolver } from './services/movie-detail-resolver.service';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
@@ -19,7 +20,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
   declarations: [MovieListComponent, MovieCardComponent, MovieDetailComponent],
   providers: [
     MovieService,
-    MovieListResolver
+    MovieListResolver,
+    MovieDetailResolver
   ]
 })
 export class MovieModule {}
