@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { ScreenService } from '../../services/screen.service';
+
 import { IMovie } from '../movie.model';
 
 @Component({
@@ -10,7 +12,7 @@ import { IMovie } from '../movie.model';
 export class MovieDetailComponent implements OnInit {
   movie: IMovie;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private screen: ScreenService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => this.movie = data['movie']);
