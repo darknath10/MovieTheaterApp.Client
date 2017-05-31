@@ -1,8 +1,8 @@
 <div *ngIf="screen.isLarge(); else elseBlock" class="d-flex movie-card">
-  <img [src]="movie.poster_path" [alt]="movie.title" />
+  <img [src]="movie.poster_path" [alt]="movie.title" [routerLink]="['/movies', movie.id]" />
   <div class="movie-card-body d-flex flex-column justify-content-start w-100 m-2">
     <div class="movie-card-body-header d-flex justify-content-between">
-      <a href="#" class="w-75" [title]="movie.title">{{movie.title}}</a>
+      <a [routerLink]="['/movies', movie.id]" class="w-75" [title]="movie.title">{{movie.title}}</a>
       <span>{{movie.vote_average}} <i class="fa fa-star"></i></span>
     </div>
     <div class="movie-card-body-meta d-flex justify-content-between mb-auto">
@@ -10,19 +10,19 @@
       <em class="ml-auto" [title]="movie.genres">{{movie.genres}}</em>
     </div>
     <p class="mb-auto">{{movie.overview}}</p>
-    <button type="button" class="btn btn-info btn-block">Details</button>
+    <button type="button" [routerLink]="['/movies', movie.id]" class="btn btn-info btn-block">Details</button>
   </div>
 </div>
 
 <ng-template #elseBlock>
   <div class="card mt-4">
-    <img class="card-img-top img-fluid" [src]="movie.backdrop_path" [alt]="movie.title" />
+    <img class="card-img-top img-fluid" [routerLink]="['/movies', movie.id]" [src]="movie.backdrop_path" [alt]="movie.title" />
     <div class="card-block">
       <h5>{{movie.title | uppercase}}</h5>
       <p class="card-text">{{movie.tagline}}</p>
     </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-info btn-block">Details</button>
+      <button type="button" [routerLink]="['/movies', movie.id]" class="btn btn-info btn-block">Details</button>
     </div>
   </div>
 </ng-template>
