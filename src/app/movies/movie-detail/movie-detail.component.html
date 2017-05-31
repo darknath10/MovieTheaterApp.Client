@@ -1,3 +1,33 @@
-<p>
-  movie-detail works!
-</p>
+<div *ngIf="screen.isLarge(); else elseBlock">
+  <div class="container-fluid p-0">
+    <div class="card card-inverse">
+      <img class="card-img movie-bd" [src]="movie.backdrop_path" [alt]="movie.title" />
+      <div class="card-img-overlay my-5">
+        <div class="container">
+          <div class="media">
+            <img class="d-flex align-self-start mr-4 img-thumbnail movie-poster" [src]="movie.poster_path" [alt]="movie.title" />
+            <div class="media-body">
+              <h2 class="mt-0">{{movie.title}}</h2>
+              <p>{{movie.overview}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="container-fluid px-0">
+    <div class="card">
+      <img class="card-img-top img-fluid" [src]="movie.poster_path" [alt]="movie.title" />
+      <div class="card-block">
+        <h5>{{movie.title | uppercase}}</h5>
+        <p class="card-text">{{movie.overview}}</p>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-info btn-block">Shows</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

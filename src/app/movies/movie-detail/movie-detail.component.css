@@ -1,0 +1,14 @@
+.card {
+  border: none;
+}
+
+.movie-bd {
+  filter: brightness(30%);
+  width: 100%;
+  height: auto;
+}
+
+.movie-poster {
+  max-height: 450px;
+  width: auto;
+}
