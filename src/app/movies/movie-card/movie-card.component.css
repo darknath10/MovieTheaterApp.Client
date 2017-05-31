@@ -5,6 +5,10 @@
   margin-bottom: 15px;
 }
 
+img, button {
+  cursor: pointer;
+}
+
 .movie-card > img {
   max-height: inherit;
   width: auto;
