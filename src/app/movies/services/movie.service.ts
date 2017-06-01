@@ -16,7 +16,7 @@ export class MovieService {
 
   getMovies(): Observable<IMovie[]> {
     return this.http.get(this._movieTheaterUrl)
-      .map((response: Response) => <IMovie[]>response.json().map((movie: IMovie) => this.movieUrlBuilder(movie)))
+      .map((response: Response) => <IMovie[]>response.json())
       .catch(this.handleError);
   }
 
