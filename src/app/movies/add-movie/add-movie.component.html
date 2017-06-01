@@ -1,0 +1,23 @@
+<div class="container">
+  <h3>Add a New Movie to the Catalog</h3>
+  <form id="searchForm" class="mt-4" (ngSubmit)="search(term)" >
+    <div class="form-group row">
+      <label for="term" class="col-sm-2 col-form-label">Movie Title</label>
+      <div class="col-sm-4">
+        <input [(ngModel)]="term" name="term" type="text" class="form-control" id="term">
+      </div>
+      <div class="col-sm-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="results">
+    <div class="media mt-3" *ngFor="let movie of results">
+    <img class="d-flex align-self-start mr-3" [src]="movie.poster_path" [alt]="movie.title" >
+    <div class="media-body">
+      <h5 class="mt-0">{{movie.title}}</h5>
+      <span><i class="fa fa-calendar"></i><em> {{movie.release_date}}</em></span><br/>
+    </div>
+    </div>
+  </div>
+</div>
