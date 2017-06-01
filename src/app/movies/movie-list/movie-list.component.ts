@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ScreenService } from '../../services/screen.service';
 
 import { IMovie } from '../movie.model';
+import { movieUrlBuilder } from '../helpers/movieUrlBuilder';
 
 @Component({
   templateUrl: './movie-list.component.html',
@@ -15,7 +16,7 @@ export class MovieListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private screen: ScreenService) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => this.movies = data['movies']);
+    this.route.data.subscribe(data => this.movies = data['movies'].map((movie: IMovie) => movieUrlBuilder(movie)));
   }
 
 }
