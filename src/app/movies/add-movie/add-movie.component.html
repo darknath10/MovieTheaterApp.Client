@@ -1,6 +1,6 @@
 <div class="container">
   <h3>Add a New Movie to the Catalog</h3>
-  <form id="searchForm" class="mt-4" (ngSubmit)="search(term)" >
+  <form id="searchForm" class="mt-4" (ngSubmit)="search(term); searchForm.reset()" #searchForm="ngForm">
     <div class="form-group row">
       <label for="term" class="col-sm-2 col-form-label">Movie Title</label>
       <div class="col-sm-4">
@@ -12,12 +12,18 @@
     </div>
   </form>
   <div *ngIf="results">
-    <div class="media mt-3" *ngFor="let movie of results">
-    <img class="d-flex align-self-start mr-3" [src]="movie.poster_path" [alt]="movie.title" >
-    <div class="media-body">
-      <h5 class="mt-0">{{movie.title}}</h5>
-      <span><i class="fa fa-calendar"></i><em> {{movie.release_date}}</em></span><br/>
-    </div>
+    <div [ngClass]="{'container': screen.isLarge(), 'container-fluid': !screen.isLarge()}">
+      <div class="row">
+        <div class="col-md-6" [class.px-0]="!screen.isLarge()" *ngFor="let movie of results">
+          <movie-card [movie]="movie">
+            <button *ngIf="!isInDb(movie.id); else elseBlock" movie-card-btn-large type="button" class="btn btn-primary btn-block" (click)="addMovie(movie.id)">Add to Catalog</button>
+            <button *ngIf="!isInDb(movie.id); else elseBlock" movie-card-btn-small type="button" class="btn btn-primary btn-block" (click)="addMovie(movie.id)">Add to Catalog</button>
+            <ng-template #elseBlock>
+              <em>Already in Catalog</em>
+            </ng-template>
+          </movie-card>
+        </div>
+      </div>
     </div>
   </div>
 </div>
