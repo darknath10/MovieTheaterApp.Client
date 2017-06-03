@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -22,19 +22,17 @@ export class MovieService {
 
   getMovie(id: number): Observable<IMovie> {
     return this.http.get(`${this._movieTheaterUrl}/${id}`)
-      .map((response: Response) => {
-        let movie = <IMovie>response.json();
-        return this.movieUrlBuilder(movie);
-      })
+      .map((response: Response) => <IMovie>response.json())
       .catch(this.handleError);
   }
 
-  private movieUrlBuilder(movie: IMovie): IMovie {
-    const tmdbImageUrl = 'http://image.tmdb.org/t/p/original';
-    movie.backdrop_path = `${tmdbImageUrl}${movie.backdrop_path}`;
-    movie.poster_path = `${tmdbImageUrl}${movie.poster_path}`;
-    movie.trailer_path = `https://www.youtube.com/embed${movie.trailer_path}`;
-    return movie;
+  addMovie(movie: IMovie): Observable<IMovie> {
+    let headers = new Headers({'Content-Type':'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+
+    return this.http.post(this._movieTheaterUrl, JSON.stringify(movie), requestOptions)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
   }
 
   private handleError(error: Response) {
