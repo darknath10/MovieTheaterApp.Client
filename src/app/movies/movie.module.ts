@@ -14,6 +14,7 @@ import { MovieDetailResolver } from './services/movie-detail-resolver.service';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { MovieNavComponent } from './movie-nav/movie-nav.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
     FormsModule,
     MovieRoutingModule  
   ],
-  declarations: [MovieListComponent, MovieCardComponent, MovieDetailComponent, AddMovieComponent],
+  declarations: [MovieListComponent, MovieCardComponent, MovieDetailComponent, AddMovieComponent, MovieNavComponent],
   providers: [
     TmdbService,
     MovieService,
