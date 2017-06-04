@@ -14,15 +14,25 @@ import { MovieDetailResolver } from './services/movie-detail-resolver.service';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
-import { MovieNavComponent } from './movie-nav/movie-nav.component';
+import { MovieTrailerComponent } from './movie-trailer/movie-trailer.component';
+import { MovieShowsComponent } from './movie-shows/movie-shows.component';
+import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MovieRoutingModule  
+    MovieRoutingModule
   ],
-  declarations: [MovieListComponent, MovieCardComponent, MovieDetailComponent, AddMovieComponent, MovieNavComponent],
+  declarations: [
+    MovieListComponent,
+    MovieCardComponent,
+    MovieDetailComponent,
+    AddMovieComponent,
+    MovieTrailerComponent,
+    MovieShowsComponent,
+    EditMovieComponent
+  ],
   providers: [
     TmdbService,
     MovieService,
@@ -30,4 +40,4 @@ import { MovieNavComponent } from './movie-nav/movie-nav.component';
     MovieDetailResolver
   ]
 })
-export class MovieModule {}
+export class MovieModule { }
