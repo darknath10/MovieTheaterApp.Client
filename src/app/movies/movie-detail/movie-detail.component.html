@@ -20,7 +20,12 @@
     </div>
   </div>
   <div class="container">
-    <movie-nav [movie]="movie"></movie-nav>
+    <nav class="nav nav-tabs">
+      <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trailer</a>
+      <a class="nav-link" [routerLink]="['shows']" routerLinkActive="active">Shows</a>
+      <a class="nav-link" [routerLink]="['edit']" routerLinkActive="active">Edit</a>
+    </nav>
+    <router-outlet></router-outlet>
   </div>
 </div>
 
