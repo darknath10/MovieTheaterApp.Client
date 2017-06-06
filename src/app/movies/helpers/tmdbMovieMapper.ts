@@ -1,6 +1,8 @@
 import { ITmdbMovie, IGenre } from '../tmdb-movie.model';
 import { IMovie } from '../movie.model';
 
+import { movieUrlBuilder } from './movieUrlBuilder';
+
 export function tmdbMovieMapper(tmdbMovie: ITmdbMovie): IMovie {
   let videos: IVideo[] = tmdbMovie.videos['results'];
 
@@ -21,7 +23,7 @@ export function tmdbMovieMapper(tmdbMovie: ITmdbMovie): IMovie {
     vote_count: tmdbMovie.vote_count,
     trailer_path: videos.find(v => v.name === 'Official Trailer').key
   }
-  return movie;
+  return movieUrlBuilder(movie);
 }
 
 interface IVideo {
