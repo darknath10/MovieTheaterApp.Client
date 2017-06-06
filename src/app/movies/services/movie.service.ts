@@ -35,6 +35,15 @@ export class MovieService {
       .catch(this.handleError);
   }
 
+  editMovie(movie: IMovie): Observable<IMovie> {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let requestOptions = new RequestOptions({headers: headers});
+
+    return this.http.put(`${this._movieTheaterUrl}/${movie.id}`, JSON.stringify(movie), requestOptions)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
