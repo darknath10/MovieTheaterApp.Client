@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { MovieService } from '../services/movie.service';
+import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
 
 import { IMovie } from '../movie.model';
 
@@ -13,7 +16,11 @@ export class EditMovieComponent implements OnInit {
   movie: IMovie;
   editMovieForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private movieService: MovieService,
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: IToastr) { }
 
   ngOnInit() {
     this.route.parent.data.subscribe(data => this.movie = data['movie']);
@@ -52,8 +59,13 @@ export class EditMovieComponent implements OnInit {
     });
   }
 
-  save(): void {
+  save() {
     let movieToSave: IMovie = Object.assign({}, this.movie, this.editMovieForm.value);
-    console.log(movieToSave);
+
+    return this.movieService.editMovie(movieToSave).subscribe(() => {
+      this.toastr.success(`${movieToSave.title} edited succesfully`);
+      this.router.navigate(['movies', movieToSave.id]);
+    },
+      (error: any) => this.toastr.warning('An error occured while editing the movie.'));
   }
 }
