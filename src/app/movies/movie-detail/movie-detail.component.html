@@ -20,7 +20,7 @@
     </div>
   </div>
   <div class="container">
-    <nav class="nav nav-tabs">
+    <nav class="nav nav-pills my-3">
       <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trailer</a>
       <a class="nav-link" [routerLink]="['shows']" routerLinkActive="active">Shows</a>
       <a class="nav-link" [routerLink]="['edit']" routerLinkActive="active">Edit</a>
@@ -41,9 +41,20 @@
         <h6>Overview</h6>
         <p class="card-text">{{movie.overview}}</p>
       </div>
-      <div class="card-footer">
-        <button type="button" class="btn btn-info btn-block">Shows</button>
+      <div class="card-footer" (click)="toggleVisibility()">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle-thin fa-stack-2x"></i>
+          <i class="fa fa-stack-1x" [ngClass]="{'fa-ellipsis-h': !visible, 'fa-ellipsis-v': visible}"></i>
+        </span>
       </div>
     </div>
+  </div>
+  <div [hidden]="!visible">
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trailer</a>
+      <a class="nav-link" [routerLink]="['shows']" routerLinkActive="active">Shows</a>
+      <a class="nav-link" [routerLink]="['edit']" routerLinkActive="active">Edit</a>
+    </nav>
+    <router-outlet></router-outlet>
   </div>
 </ng-template>

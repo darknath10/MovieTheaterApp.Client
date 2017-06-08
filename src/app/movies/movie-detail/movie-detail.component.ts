@@ -12,11 +12,16 @@ import { IMovie } from '../movie.model';
 })
 export class MovieDetailComponent implements OnInit {
   movie: IMovie;
+  visible: boolean = false;
 
   constructor(private route: ActivatedRoute, private screen: ScreenService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => this.movie = data['movie']);
+  }
+
+  toggleVisibility(): void {
+    this.visible = !this.visible;
   }
 
 }
