@@ -36,9 +36,10 @@
     <label for="tagline">Tagline</label>
     <input type="text" class="form-control" id="tagline" formControlName="tagline" />
   </div>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="{'has-danger': editMovieForm.get('title').dirty && editMovieForm.get('title').invalid}" >
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" formControlName="title" />
+    <em *ngIf="editMovieForm.get('title').dirty && editMovieForm.get('title').invalid" class="form-control-feedback">Field Required</em>
   </div>
   <div class="form-group">
     <label for="trailer_path">Trailer Path</label>
@@ -56,5 +57,5 @@
     <label for="genres">Genres</label>
     <input type="string" class="form-control" id="genres" formControlName="genres" />
   </div>
-  <button type="submit" class="btn btn-primary">Edit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="(editMovieForm.dirty && editMovieForm.invalid) || (editMovieForm.untouched || editMovieForm.pristine)">Edit</button>
 </form>
