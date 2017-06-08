@@ -21,12 +21,21 @@ export function tmdbMovieMapper(tmdbMovie: ITmdbMovie): IMovie {
     title: tmdbMovie.title,
     vote_average: tmdbMovie.vote_average,
     vote_count: tmdbMovie.vote_count,
-    trailer_path: videos.find(v => v.name === 'Official Trailer').key
+    trailer_path: findTrailerKey(videos)
   }
   return movieUrlBuilder(movie);
 }
 
 interface IVideo {
+  type: string;
   name: string;
   key: string;
+}
+
+function findTrailerKey(videos: IVideo[]): string {
+  let video: IVideo = videos.find(v => v.name === 'Official Trailer');
+  if(video) return video.key;
+  video = videos.find(v => v.type === 'Trailer');
+  if(video) return video.key;
+  return videos[0].key;
 }
