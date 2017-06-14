@@ -13,9 +13,18 @@
         <a class="nav-link" routerLink="/movies/new">Add Movie</a>
       </li>      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 mr-auto">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a *ngIf="!auth.currentUser" class="btn btn-outline-warning" routerLink="/user/login">Login</a>
+        <a *ngIf="auth.currentUser" class="btn btn-outline-info mr-2" routerLink="/movies">Welcome {{auth.currentUser.username}}</a>
+      </li>
+      <li class="nav-item">
+        <button *ngIf="auth.currentUser" class="btn btn-outline-danger" (click)="auth.logout()">Logout</button>
+      </li>
+    </ul>
   </div>
 </nav>
