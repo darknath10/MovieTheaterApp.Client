@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>Login</h3>
+  <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+    <div class="form-group" [ngClass]="{'has-danger': loginForm.get('username').dirty && loginForm.get('username').invalid}">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" formControlName="username" />
+      <em *ngIf="loginForm.get('username').dirty && loginForm.get('username').invalid" class="form-control-feedback">Username required</em>
+    </div>
+    <div class="form-group" [ngClass]="{'has-danger': loginForm.get('password').dirty && loginForm.get('password').invalid}">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" />
+      <em *ngIf="loginForm.get('password').dirty && loginForm.get('password').invalid" class="form-control-feedback">Password required</em>
+    </div>
+    <button [disabled]="(loginForm.dirty && loginForm.invalid) || loginForm.pristine || loginForm.untouched" type="submit" class="btn btn-primary">Login</button>
+  </form>
+</div>
