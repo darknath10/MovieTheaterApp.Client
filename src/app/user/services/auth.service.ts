@@ -15,6 +15,15 @@ export class AuthService {
 
   constructor(private http: Http, private router: Router, @Inject(TOASTR_TOKEN) private toastr: IToastr) { }
 
+  register(username: string, emailAdress: string, password: string, confirmPassword: string): Observable<any> {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    let credentials = { username: username, emailAdress: emailAdress, password: password, confirmPassword: confirmPassword };
+    let baseUrl = 'http://localhost:5000/api/account/register';
+
+    return this.http.post(baseUrl, JSON.stringify(credentials), options);
+  }
+
   login(username: string, password: string): Observable<IUser> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
