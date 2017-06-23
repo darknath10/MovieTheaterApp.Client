@@ -30,7 +30,11 @@ export class LoginComponent implements OnInit {
   login() {
     return this.auth.login(this.loginForm.value['username'], this.loginForm.value['password']).subscribe((res) => {
       this.toastr.success(`Welcome ${this.auth.currentUser.username}!`);
-      this.router.navigate(['/movies']);
+      if(this.auth.redirectUrl) {
+        this.router.navigateByUrl(this.auth.redirectUrl);
+      } else {
+        this.router.navigate(['/movies']);
+      };
     }, (err) => {
       this.toastr.error('Login failed');
       this.loginForm.reset();
