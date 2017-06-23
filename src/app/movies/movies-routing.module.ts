@@ -11,6 +11,8 @@ import { MovieTrailerComponent } from './movie-trailer/movie-trailer.component';
 import { MovieShowsComponent } from './movie-shows/movie-shows.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
+import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
+
 const moviesRoutes: Routes = [
     {
         path: 'movies',
@@ -22,7 +24,8 @@ const moviesRoutes: Routes = [
             },
             {
                 path: 'new',
-                component: AddMovieComponent
+                component: AddMovieComponent,
+                canActivate: [AuthAdminGuard]
             },
             {
                 path: ':id',
@@ -39,7 +42,8 @@ const moviesRoutes: Routes = [
                     },
                     {
                         path: 'edit',
-                        component: EditMovieComponent
+                        component: EditMovieComponent,
+                        canActivate: [AuthAdminGuard]
                     }
                 ]
             }

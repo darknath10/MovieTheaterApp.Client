@@ -18,6 +18,8 @@ import { MovieTrailerComponent } from './movie-trailer/movie-trailer.component';
 import { MovieShowsComponent } from './movie-shows/movie-shows.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
+import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
     TmdbService,
     MovieService,
     MovieListResolver,
-    MovieDetailResolver
+    MovieDetailResolver,
+    AuthAdminGuard
   ]
 })
 export class MovieModule { }
