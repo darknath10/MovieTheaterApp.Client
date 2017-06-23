@@ -1,6 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { JwtHelper } from 'angular2-jwt';
 
 import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
 
@@ -12,12 +14,17 @@ import { IUser } from '../models/user.model';
 @Injectable()
 export class AuthService {
   currentUser: IUser;
+  redirectUrl: string;
+  jwtHelper = new JwtHelper();
 
-  constructor(private http: Http, private router: Router, @Inject(TOASTR_TOKEN) private toastr: IToastr) { }
+  constructor(private http: Http, 
+    private router: Router,
+    private route: ActivatedRoute, 
+    @Inject(TOASTR_TOKEN) private toastr: IToastr) { }
 
   register(username: string, emailAdress: string, password: string, confirmPassword: string): Observable<any> {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
     let credentials = { username: username, emailAdress: emailAdress, password: password, confirmPassword: confirmPassword };
     let baseUrl = 'http://localhost:5000/api/account/register';
 
@@ -25,32 +32,54 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<IUser> {
+    let url = this.route.url;
+    console.log(url);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let credentials = { username: username, password: password };
     let baseUrl = 'http://localhost:5000/api/account/login';
 
     return this.http.post(baseUrl, JSON.stringify(credentials), options).do((response: Response) => {
-      this.currentUser = <IUser>response.json();
-      localStorage.setItem('user', JSON.stringify(this.currentUser));
+      response = response.json();
+      let token = response['user_token'];
+      let decodedToken = this.jwtHelper.decodeToken(token);
+      let user: IUser = {
+        username: decodedToken['sub'],
+        email: decodedToken['email'],
+        user_token: token
+      };
+      this.currentUser = user;
+      localStorage.setItem('user_token', token);
     }).catch((error: Response) => {
       return Observable.create(false);
     });
   }
 
   checkAutenticationStatus() {
-    if (!!localStorage.getItem('user')) {
-      let user = JSON.parse(localStorage.getItem('user'));
-      let userExpires = new Date(user['expires']);
-      if (userExpires > new Date(Date.now())) {
-        this.currentUser = user;
-      }
+    let token = localStorage.getItem('user_token');
+    if(token && !this.jwtHelper.isTokenExpired(token)){
+      let decodedToken = this.jwtHelper.decodeToken(token);
+      let user: IUser = {
+        username: decodedToken['sub'],
+        email: decodedToken['email'],
+        user_token: token
+      };
+      this.currentUser = user;
+    }
+  }
+
+  isSuperUser(): boolean {
+    if(this.currentUser) {
+      let decodedToken = this.jwtHelper.decodeToken(this.currentUser.user_token);
+      let result = decodedToken['SuperUser'] || false;
+      console.log(result);
+      return !!decodedToken['SuperUser'] || false;      
     }
   }
 
   logout() {
     this.currentUser = null;
-    localStorage.removeItem('user');
+    localStorage.removeItem('user_token');
     this.toastr.info('See you soon Buddy!');
     this.router.navigate(['/movies']);
   }
