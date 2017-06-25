@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
+import { AuthService } from '../../user/services/auth.service';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,7 +14,7 @@ export class MovieService {
 
   private _movieTheaterUrl = "http://localhost:5000/api/movies";
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private auth: AuthService) {}
 
   getMovies(): Observable<IMovie[]> {
     return this.http.get(this._movieTheaterUrl)
@@ -27,7 +29,7 @@ export class MovieService {
   }
 
   addMovie(movie: IMovie): Observable<IMovie> {
-    let headers = new Headers({'Content-Type':'application/json'});
+    let headers = new Headers({'Content-Type':'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
     let requestOptions = new RequestOptions({headers: headers});
 
     return this.http.post(this._movieTheaterUrl, JSON.stringify(movie), requestOptions)
@@ -36,7 +38,7 @@ export class MovieService {
   }
 
   editMovie(movie: IMovie): Observable<IMovie> {
-    let headers = new Headers({'Content-Type': 'application/json'});
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
     let requestOptions = new RequestOptions({headers: headers});
 
     return this.http.put(`${this._movieTheaterUrl}/${movie.id}`, JSON.stringify(movie), requestOptions)
