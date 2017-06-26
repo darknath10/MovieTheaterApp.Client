@@ -1,16 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, ViewChild, ElementRef } from '@angular/core';
+
+import { JQ_TOKEN } from '../../services/jQuery.service';
 
 @Component({
-  selector: 'movies-modal',
+  selector: 'modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
   @Input() title: string;
+  @Input() modalId: string;
+  @ViewChild('modalContainer') element: ElementRef;
   
-  constructor() { }
+  constructor(@Inject(JQ_TOKEN) private $: any) { }
 
   ngOnInit() {
+  }
+
+  closeModal() {
+    this.$(this.element.nativeElement).modal('hide');
   }
 
 }
