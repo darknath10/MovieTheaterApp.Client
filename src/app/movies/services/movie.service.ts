@@ -28,6 +28,14 @@ export class MovieService {
       .catch(this.handleError);
   }
 
+  searchMovies(term: string) {
+    let searchTerm = term.toLocaleLowerCase();
+    let results: IMovie[] = [];
+    return this.http.get(`${this._movieTheaterUrl}/search/${searchTerm}`)
+      .map((response: Response) => <IMovie[]>response.json())
+      .catch(this.handleError);
+  }
+
   addMovie(movie: IMovie): Observable<IMovie> {
     let headers = new Headers({'Content-Type':'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
     let requestOptions = new RequestOptions({headers: headers});
