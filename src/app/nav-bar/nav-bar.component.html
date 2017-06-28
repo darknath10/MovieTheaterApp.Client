@@ -14,7 +14,7 @@
         <a class="nav-link" routerLink="/movies/new">Add Movie</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0 mr-auto" (ngSubmit)="searchMovies(term)">
+    <form #searchForm="ngForm" class="form-inline my-2 my-lg-0 mr-auto" (ngSubmit)="searchMovies(term); searchForm.reset()">
       <input [(ngModel)]="term" name="term" class="form-control mr-sm-2" type="text" placeholder="Search Movies">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" modal-trigger="movieSearchModal">Search</button>
     </form>
