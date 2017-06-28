@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { AuthService } from '../services/auth.service';
-import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
+import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import { pwdMatcher } from '../custom-validators/pwd-matcher.validator';
 

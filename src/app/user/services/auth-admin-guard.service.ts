@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from './auth.service';
-import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
+import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import { IUser } from '../models/user.model';
 

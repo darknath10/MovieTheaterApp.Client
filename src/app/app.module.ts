@@ -12,14 +12,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 
-import { ScreenService } from './services/screen.service';
+import { ScreenService, TOASTR_PROVIDER, JQUERY_PROVIDER } from './services/index';
 import { AuthService } from './user/services/auth.service';
-import { TOASTR_TOKEN, IToastr } from './services/toastr.service';
-import { JQ_TOKEN } from './services/jQuery.service';
 import { ModalComponent } from './common/modal/modal.component';
 
-declare let toastr: IToastr;
-declare let jQuery: Object;
 
 @NgModule({
   declarations: [
@@ -38,8 +34,8 @@ declare let jQuery: Object;
   ],
   providers: [
     ScreenService,
-    { provide: TOASTR_TOKEN, useValue: toastr },
-    { provide: JQ_TOKEN, useValue: jQuery },
+    TOASTR_PROVIDER,
+    JQUERY_PROVIDER,
     AuthService
     ],
   bootstrap: [AppComponent]

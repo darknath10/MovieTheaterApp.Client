@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Input, ViewChild, ElementRef } from '@angular/core';
 
-import { JQ_TOKEN } from '../../services/jQuery.service';
+import { JQ_TOKEN } from '../../services/index';
 
 @Component({
   selector: 'modal',

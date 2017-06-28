@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MovieService } from '../services/movie.service';
-import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
+import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import { IMovie } from '../movie.model';
 

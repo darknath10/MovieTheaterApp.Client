@@ -1,10 +1,10 @@
 import { InjectionToken } from '@angular/core';
-
-export interface IToastr {
-  success(msg: string, title?: string): void;
-  info(msg: string, title?: string): void;
-  warning(msg: string, title?: string): void;
-  error(msg: string, title?: string): void;
-}
+import { IToastr } from './itoastr.interface';
 
 export let TOASTR_TOKEN = new InjectionToken<IToastr>('toastr');
+
+export function toastrFactory() {
+  return window['toastr'];
+}
+
+export const TOASTR_PROVIDER = { provide: TOASTR_TOKEN, useFactory: toastrFactory };

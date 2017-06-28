@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { JwtHelper } from 'angular2-jwt';
 
-import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
+import { TOASTR_TOKEN, IToastr } from '../../services/index';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';

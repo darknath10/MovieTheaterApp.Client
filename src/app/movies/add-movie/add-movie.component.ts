@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { TmdbService } from '../services/tmdb.service';
 import { MovieService } from '../services/movie.service';
 import { ScreenService } from '../../services/screen.service';
-import { IToastr, TOASTR_TOKEN } from '../../services/toastr.service';
+import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import 'rxjs/add/operator/map';
 
