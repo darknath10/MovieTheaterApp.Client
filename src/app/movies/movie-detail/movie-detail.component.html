@@ -22,7 +22,6 @@
   <div class="container">
     <nav class="nav nav-pills my-3">
       <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trailer</a>
-      <a class="nav-link" [routerLink]="['shows']" routerLinkActive="active">Shows</a>
       <a class="nav-link" [routerLink]="['edit']" routerLinkActive="active">Edit</a>
     </nav>
     <router-outlet></router-outlet>
@@ -52,7 +51,6 @@
   <div [hidden]="!visible">
     <nav class="nav nav-pills flex-column">
       <a class="nav-link" [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trailer</a>
-      <a class="nav-link" [routerLink]="['shows']" routerLinkActive="active">Shows</a>
       <a class="nav-link" [routerLink]="['edit']" routerLinkActive="active">Edit</a>
     </nav>
     <router-outlet></router-outlet>

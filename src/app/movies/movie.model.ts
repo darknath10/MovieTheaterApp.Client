@@ -1,9 +1,3 @@
-export interface IShow {
-  date: Date,
-  hall: string,
-  availablePlaces: number
-}
-
 export interface IMovie {
   id: number,
   backdrop_path: string,
@@ -20,5 +14,4 @@ export interface IMovie {
   vote_average: number,
   vote_count: number,
   genres: string,
-  shows: IShow[]
 }
