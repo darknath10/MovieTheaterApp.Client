@@ -5,13 +5,14 @@
       <star-rating (rateEmitter)="setRate($event)"></star-rating>
     </div>
     <form #addReviewForm="ngForm" (ngSubmit)="addReview(addReviewForm)">
-      <input type="number" id="score" name="score" [(ngModel)]="score" hidden />
-      <div class="form-group">
+      <input type="number" id="score" name="score" [(ngModel)]="score" hidden required/>
+      <div class="form-group" [ngClass]="{'has-danger': addReviewForm.touched && addReviewForm.invalid}">
         <label for="text">Write your review</label>
-        <textarea type="text" class="form-control" id="text" name="text" [(ngModel)]="text"></textarea>
+        <textarea type="text" class="form-control" id="text" name="text" [(ngModel)]="text" required></textarea>
+        <em *ngIf="addReviewForm.touched && addReviewForm.invalid" class="form-control-feedback">Rate and Review required</em>
       </div>
       <div class="btn-group" role="group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="addReviewForm.pristine || !addReviewForm.valid">Submit</button>
         <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button> 
       </div>
     </form>
