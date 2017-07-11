@@ -9,6 +9,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieTrailerComponent } from './movie-trailer/movie-trailer.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { ReviewListComponent } from './review-list/review-list.component';
 
 import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
 
@@ -39,6 +40,10 @@ const moviesRoutes: Routes = [
                         path: 'edit',
                         component: EditMovieComponent,
                         canActivate: [AuthAdminGuard]
+                    },
+                    {
+                        path: 'reviews',
+                        component: ReviewListComponent
                     }
                 ]
             }
