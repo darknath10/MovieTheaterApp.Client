@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ScreenService } from '../../services/screen.service';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 @Component({
   selector: 'movie-card',

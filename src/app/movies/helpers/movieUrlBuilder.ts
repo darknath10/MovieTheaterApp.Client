@@ -1,4 +1,4 @@
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 export function movieUrlBuilder(movie: IMovie): IMovie {
   const tmdbImageUrl = 'http://image.tmdb.org/t/p/original';

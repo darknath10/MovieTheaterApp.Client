@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { IMovie } from '../movie.model';
-import { ITmdbMovie } from '../tmdb-movie.model';
+import { IMovie } from '../models/movie.model';
+import { ITmdbMovie } from '../models/tmdb-movie.model';
 
 import { tmdbMovieMapper } from '../helpers/tmdbMovieMapper';
 

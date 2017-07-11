@@ -8,8 +8,8 @@ import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import 'rxjs/add/operator/map';
 
-import { IMovie } from '../movie.model';
-import { ITmdbMovie } from '../tmdb-movie.model';
+import { IMovie } from '../models/movie.model';
+import { ITmdbMovie } from '../models/tmdb-movie.model';
 import { movieUrlBuilder } from '../helpers/movieUrlBuilder';
 import { tmdbMovieMapper } from '../helpers/tmdbMovieMapper';
 

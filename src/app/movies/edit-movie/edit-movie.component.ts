@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MovieService } from '../services/movie.service';
 import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 @Component({
   selector: 'edit-movie',

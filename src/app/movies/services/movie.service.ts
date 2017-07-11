@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 @Injectable()
 export class MovieService {

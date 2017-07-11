@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../user/services/auth.service';
 import { MovieService } from '../movies/services/movie.service';
 
-import { IMovie } from '../movies/movie.model';
+import { IMovie } from '../movies/models/movie.model';
 
 @Component({
   selector: 'nav-bar',

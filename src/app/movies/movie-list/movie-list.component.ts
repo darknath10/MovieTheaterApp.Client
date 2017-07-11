@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ScreenService } from '../../services/screen.service';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 @Component({
   templateUrl: './movie-list.component.html',

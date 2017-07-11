@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 
 import { MovieService } from './movie.service';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 import { Observable } from 'rxjs/Observable';
 

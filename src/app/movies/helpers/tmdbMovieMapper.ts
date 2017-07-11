@@ -1,5 +1,5 @@
-import { ITmdbMovie, IGenre } from '../tmdb-movie.model';
-import { IMovie } from '../movie.model';
+import { ITmdbMovie, IGenre } from '../models/tmdb-movie.model';
+import { IMovie } from '../models/movie.model';
 
 import { movieUrlBuilder } from './movieUrlBuilder';
 

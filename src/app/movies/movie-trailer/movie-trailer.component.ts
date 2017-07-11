@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 @Component({
   templateUrl: './movie-trailer.component.html',

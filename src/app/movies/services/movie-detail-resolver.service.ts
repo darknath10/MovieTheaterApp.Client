@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/r
 
 import { MovieService } from '../services/movie.service';
 
-import { IMovie } from '../movie.model';
+import { IMovie } from '../models/movie.model';
 
 import { Observable } from 'rxjs/Observable';
 
