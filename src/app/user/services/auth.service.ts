@@ -71,7 +71,6 @@ export class AuthService {
     if(this.currentUser) {
       let decodedToken = this.jwtHelper.decodeToken(this.currentUser.user_token);
       let result = decodedToken['SuperUser'] || false;
-      console.log(result);
       return !!decodedToken['SuperUser'] || false;      
     }
   }
