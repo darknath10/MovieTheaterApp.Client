@@ -18,6 +18,7 @@ import { MovieTrailerComponent } from './movie-trailer/movie-trailer.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
 import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
+import { ReviewListComponent } from './review-list/review-list.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
     AddMovieComponent,
     MovieTrailerComponent,
     EditMovieComponent,
+    ReviewListComponent,
   ],
   providers: [
     TmdbService,
