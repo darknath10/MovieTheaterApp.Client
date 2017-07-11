@@ -62,7 +62,7 @@ export class MovieService {
   }
 
   addMovieReview(review, movieId: number): Observable<IReview> {
-    let headers = new Headers({'Content-Type':'application/json'});
+    let headers = new Headers({'Content-Type':'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
     let options = new RequestOptions({headers: headers});
 
     return this.http.post(`${this._movieTheaterUrl}/${movieId}/reviews/new`, JSON.stringify(review), options)
