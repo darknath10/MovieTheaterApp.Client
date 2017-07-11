@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRoute } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { MovieService } from './movie.service';
 
@@ -12,10 +12,10 @@ import { Observable } from 'rxjs/Observable';
 export class ReviewListResolver implements Resolve<IReview[]> {
     movie: IMovie;
 
-    constructor(private movieService: MovieService, private route: ActivatedRoute) {}
+    constructor(private movieService: MovieService) {}
 
-    resolve(): Observable<IReview[]> {
-        this.route.parent.data.subscribe(data => this.movie = data['movie']);
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IReview[]> {
+        this.movie = route.parent.data['movie'];
         return this.movieService.getMovieReviews(this.movie.id);
     }
 }
