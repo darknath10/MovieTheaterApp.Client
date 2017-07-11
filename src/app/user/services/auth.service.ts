@@ -33,7 +33,6 @@ export class AuthService {
 
   login(username: string, password: string): Observable<IUser> {
     let url = this.route.url;
-    console.log(url);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let credentials = { username: username, password: password };
