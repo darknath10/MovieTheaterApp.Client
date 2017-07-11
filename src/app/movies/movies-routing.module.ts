@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MovieListResolver } from './services/movie-list-resolver.service';
 import { MovieDetailResolver } from './services/movie-detail-resolver.service';
+import { ReviewListResolver } from './services/review-list.resolver';
 
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
@@ -43,7 +44,8 @@ const moviesRoutes: Routes = [
                     },
                     {
                         path: 'reviews',
-                        component: ReviewListComponent
+                        component: ReviewListComponent,
+                        resolve: { reviews: ReviewListResolver}
                     }
                 ]
             }

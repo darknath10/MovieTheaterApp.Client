@@ -19,6 +19,7 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
 import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
 import { ReviewListComponent } from './review-list/review-list.component';
+import { ReviewListResolver } from './services/review-list.resolver';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
     MovieService,
     MovieListResolver,
     MovieDetailResolver,
+    ReviewListResolver,
     AuthAdminGuard
   ]
 })
