@@ -1,0 +1,12 @@
+.rating span {
+  cursor: pointer;
+  float: right;
+}  
+
+.rating span:hover, .rating span:hover ~ span {
+  color: gold;
+}
+
+.rated {
+  float: right;
+}

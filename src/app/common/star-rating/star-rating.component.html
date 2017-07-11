@@ -1,0 +1,18 @@
+<div *ngIf="!score; else elseblock" class="rating d-inline">
+  <span (click)="setRate(10)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(9)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(8)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(7)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(6)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(5)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(4)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(3)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(2)"><i class="fa fa-star fa-lg"></i></span>
+  <span (click)="setRate(1)"><i class="fa fa-star fa-lg"></i></span>
+</div>
+
+<ng-template #elseblock>
+  <div class="rated d-inline">
+    <span class="badge badge-pill badge-success vote-badge"><i class="fa fa-star fa-lg" style="color:gold"></i> {{score}}</span>
+  </div>
+</ng-template>
