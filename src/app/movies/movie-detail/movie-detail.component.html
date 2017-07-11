@@ -9,7 +9,8 @@
             <div class="media-body">
               <h2 class="mt-0">{{movie.title}}</h2>
               <span class="mr-5"><i class="fa fa-calendar"></i><em> {{movie.release_date | date:'shortDate'}}</em></span>
-              <span class="d-inline-block"><i class="fa fa-clock-o"></i><em> {{movie.runtime}} mins</em></span>
+              <span class="d-inline-block mr-5"><i class="fa fa-clock-o"></i><em> {{movie.runtime}} mins</em></span>
+              <span><i class="fa fa-star"></i><em> {{movie.vote_average}}</em></span>
               <br/><br>
               <h4>Overview</h4>
               <p>{{movie.overview}}</p>
@@ -35,7 +36,8 @@
       <div class="card-block">
         <h5>{{movie.title | uppercase}}</h5>
         <span class="mr-5"><i class="fa fa-calendar"></i><em> {{movie.release_date | date:'shortDate'}}</em></span>
-        <span class="d-inline block"><i class="fa fa-clock-o"></i><em> {{movie.runtime}} mins</em></span>
+        <span class="d-inline block mr-5"><i class="fa fa-clock-o"></i><em> {{movie.runtime}} mins</em></span>
+        <span><i class="fa fa-star"></i> {{movie.vote_average}}</span>
         <br><br>
         <h6>Overview</h6>
         <p class="card-text">{{movie.overview}}</p>
