@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { IMovie } from '../models/movie.model';
+import { IReview } from '../models/review.model';
 
 @Injectable()
 export class MovieService {
@@ -51,6 +52,12 @@ export class MovieService {
 
     return this.http.put(`${this._movieTheaterUrl}/${movie.id}`, JSON.stringify(movie), requestOptions)
       .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  getMovieReviews(movieId: number): Observable<IReview[]> {
+    return this.http.get(`${this._movieTheaterUrl}/${movieId}/reviews`)
+      .map((response: Response) => <IReview[]>response.json())
       .catch(this.handleError);
   }
 
