@@ -61,6 +61,15 @@ export class MovieService {
       .catch(this.handleError);
   }
 
+  addMovieReview(review, movieId: number): Observable<IReview> {
+    let headers = new Headers({'Content-Type':'application/json'});
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.post(`${this._movieTheaterUrl}/${movieId}/reviews/new`, JSON.stringify(review), options)
+      .map((response: Response) => <IReview>response.json())
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
