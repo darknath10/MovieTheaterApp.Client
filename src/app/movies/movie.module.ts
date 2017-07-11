@@ -19,7 +19,8 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
 import { AuthAdminGuard } from '../user/services/auth-admin-guard.service';
 import { ReviewListComponent } from './review-list/review-list.component';
-import { ReviewListResolver } from './services/review-list.resolver';
+import { ReviewListResolver } from './services/review-list.resolver.service';
+import { ReviewCardComponent } from './review-card/review-card.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ReviewListResolver } from './services/review-list.resolver';
     MovieTrailerComponent,
     EditMovieComponent,
     ReviewListComponent,
+    ReviewCardComponent,
   ],
   providers: [
     TmdbService,
