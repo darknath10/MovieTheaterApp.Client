@@ -3,9 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MovieService } from '../services/movie.service';
+import { TmdbService } from '../services/tmdb.service';
 import { IToastr, TOASTR_TOKEN } from '../../services/index';
 
 import { IMovie } from '../models/movie.model';
+import { ITmdbMovie } from '../models/tmdb-movie.model';
+
+import { movieUrlBuilder } from '../helpers/movieUrlBuilder';
+import { tmdbMovieMapper } from '../helpers/tmdbMovieMapper';
 
 @Component({
   selector: 'edit-movie',
@@ -15,10 +20,12 @@ import { IMovie } from '../models/movie.model';
 export class EditMovieComponent implements OnInit {
   movie: IMovie;
   editMovieForm: FormGroup;
+  ManualMode: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
     private movieService: MovieService,
+    private tmdb: TmdbService,
     private router: Router,
     @Inject(TOASTR_TOKEN) private toastr: IToastr) { }
 
@@ -64,8 +71,28 @@ export class EditMovieComponent implements OnInit {
 
     return this.movieService.editMovie(movieToSave).subscribe(() => {
       this.toastr.success(`${movieToSave.title} edited succesfully`);
-      this.router.navigate(['movies', movieToSave.id]);
+      this.router.navigate(['movies']);
     },
-      (error: any) => this.toastr.warning('An error occured while editing the movie.'));
+      (error: any) => this.toastr.error('An error occured while editing the movie.'));
+  }
+
+  deleteMovie() {
+    return this.movieService.deleteMovie(this.movie.id).subscribe(() => {
+      this.toastr.success('Removed!');
+      this.router.navigate(['movies']);
+    }, (error: any) => this.toastr.error('Couldn\'t remove this entry.'));
+  }
+
+  updateFromTmdb() {
+    return this.tmdb.getMovieDetails(this.movie.tmdb_id).subscribe((tmdbMovie: ITmdbMovie) => {      
+      return this.movieService.editMovie(tmdbMovieMapper(tmdbMovie, this.movie.id)).subscribe(() => {
+        this.toastr.success('Updated', `${this.movie.title}`);
+        this.router.navigate(['movies']);
+      }, (error: any) => this.toastr.error('An error occured while updating this title.'));
+    }, (error: any) => this.toastr.error('An error occured while updating this title.'));
+  }
+
+  toggleManualMode() {
+    this.ManualMode = !this.ManualMode;
   }
 }

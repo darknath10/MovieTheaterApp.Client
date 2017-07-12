@@ -1,5 +1,10 @@
 <h3>Edit {{movie.title}}</h3>
-<form (ngSubmit)="save()" [formGroup]="editMovieForm" novalidate>
+<div class="button-group">
+  <button type="button" class="btn btn-outline-success" (click)="updateFromTmdb()">Update from TMDB</button>
+  <button type="button" class="btn btn-outline-info" (click)="toggleManualMode()">Edit manually</button>
+  <button type="button" class="btn btn-outline-danger" (click)="deleteMovie()">Delete</button>
+</div>
+<form (ngSubmit)="save()" [formGroup]="editMovieForm" novalidate [hidden]="!ManualMode">
   <div class="form-group">
     <label for="backdrop_path">Backdrop Path</label>
     <input type="text" class="form-control" id="backdrop_path" formControlName="backdrop_path" />
