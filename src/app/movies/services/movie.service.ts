@@ -46,11 +46,20 @@ export class MovieService {
       .catch(this.handleError);
   }
 
-  editMovie(movie: IMovie): Observable<IMovie> {
+  editMovie(movie: IMovie): Observable<any> {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
     let requestOptions = new RequestOptions({headers: headers});
 
     return this.http.put(`${this._movieTheaterUrl}/${movie.id}`, JSON.stringify(movie), requestOptions)
+      .map((response: Response) => response.json())
+      .catch(this.handleError);
+  }
+
+  deleteMovie(movieId: number) {
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': `bearer ${this.auth.currentUser.user_token}`});
+    let options = new RequestOptions({headers: headers});
+
+    return this.http.delete(`${this._movieTheaterUrl}/${movieId}`, options)
       .map((response: Response) => response.json())
       .catch(this.handleError);
   }
