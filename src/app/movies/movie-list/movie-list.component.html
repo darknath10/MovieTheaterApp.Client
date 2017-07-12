@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-6" [class.px-0]="!screen.isLarge()" *ngFor="let movie of movies">
       <movie-card [movie]="movie">
-        <button movie-card-btn-large type="button" [routerLink]="['/movies', movie.id]" class="btn btn-info btn-block">Details</button>
-        <button movie-card-btn-small type="button" [routerLink]="['/movies', movie.id]" class="btn btn-info btn-block">Details</button>
+        <button movie-card-btn-large type="button" [routerLink]="['/movies', movie.id]" class="btn btn-outline-primary btn-block">More Info</button>
+        <button movie-card-btn-small type="button" [routerLink]="['/movies', movie.id]" class="btn btn-outline-primary btn-block">More Info</button>
       </movie-card>
     </div>
   </div>

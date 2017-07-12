@@ -16,11 +16,11 @@
     </ul>
     <form #searchForm="ngForm" class="form-inline my-2 my-lg-0 mr-auto" (ngSubmit)="searchMovies(term); searchForm.reset()">
       <input [(ngModel)]="term" name="term" class="form-control mr-sm-2" type="text" placeholder="Search Movies">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" modal-trigger="movieSearchModal">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" modal-trigger="movieSearchModal"><i class="fa fa-search"></i> Search</button>
     </form>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a *ngIf="!auth.currentUser" class="btn btn-outline-warning" routerLink="/user/register">Register</a>
+        <a *ngIf="!auth.currentUser" class="btn btn-outline-warning mr-2" routerLink="/user/register">Register</a>
       </li>
       <li class="nav-item">
         <a *ngIf="!auth.currentUser" class="btn btn-outline-warning" routerLink="/user/login">Login</a>
