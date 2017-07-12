@@ -3,11 +3,11 @@ import { IMovie } from '../models/movie.model';
 
 import { movieUrlBuilder } from './movieUrlBuilder';
 
-export function tmdbMovieMapper(tmdbMovie: ITmdbMovie): IMovie {
+export function tmdbMovieMapper(tmdbMovie: ITmdbMovie, id?: number): IMovie {
   let videos: IVideo[] = tmdbMovie.videos['results'];
 
   let movie: IMovie = {
-    id: null,
+    id: id || null,
     backdrop_path: tmdbMovie.backdrop_path,
     genres: tmdbMovie.genres.map(g => g.name).join(', '),
     tmdb_id: tmdbMovie.id,
@@ -33,9 +33,12 @@ interface IVideo {
 }
 
 function findTrailerKey(videos: IVideo[]): string {
-  let video: IVideo = videos.find(v => v.name === 'Official Trailer');
-  if(video) return video.key;
-  video = videos.find(v => v.type === 'Trailer');
-  if(video) return video.key;
-  return videos[0].key;
+  if (videos.length > 0) {
+    let video: IVideo = videos.find(v => v.name === 'Official Trailer');
+    if (video) return video.key;
+    video = videos.find(v => v.type === 'Trailer');
+    if (video) return video.key;
+    return videos[0].key;
+  }
+  return null;
 }
