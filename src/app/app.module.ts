@@ -15,6 +15,7 @@ import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { ScreenService, TOASTR_PROVIDER, JQUERY_PROVIDER } from './services/index';
 import { AuthService } from './user/services/auth.service';
 import { ModalComponent } from './common/modal/modal.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ModalComponent } from './common/modal/modal.component';
     AppComponent,
     NavBarComponent,
     ModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
