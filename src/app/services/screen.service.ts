@@ -6,7 +6,7 @@ export class ScreenService {
   private resizeSource = new Subject<null>();
   resize$ = this.resizeSource.asObservable();
 
-  mediumBreakpoint = 800;
+  mediumBreakpoint = 1199;
   screenWidth = 1000;
   screenHeight = 800;
 
