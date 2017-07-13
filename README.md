@@ -1,5 +1,7 @@
 # NgMovies.Client
 
+This application works with [NgMovies.API](https://github.com/darknath10/NgMovies.API/).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
 ## Development server
