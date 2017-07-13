@@ -2,6 +2,8 @@
 
 This application works with [NgMovies.API](https://github.com/darknath10/NgMovies.API/).
 
+In the app, log in with admin/P@ssw0rd credentials in order to be able to add and edit movies.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
 ## Development server
