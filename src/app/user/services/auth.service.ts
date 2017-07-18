@@ -31,7 +31,7 @@ export class AuthService {
     return this.http.post(baseUrl, JSON.stringify(credentials), options);
   }
 
-  login(username: string, password: string): Observable<IUser> {
+  login(username: string, password: string) {
     let url = this.route.url;
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -49,8 +49,6 @@ export class AuthService {
       };
       this.currentUser = user;
       localStorage.setItem('user_token', token);
-    }).catch((error: Response) => {
-      return Observable.create(false);
     });
   }
 
